@@ -8,7 +8,7 @@ const Model = {
   githubUser: "Faytlla4",
 
   // Where the contact form delivers (via formsubmit.co relay)
-  contactEmail: "fahmi@example.com",
+  contactEmail: "firjatullahfahmi5@gmail.com",
 
   // App state (read/written by the Controller, displayed by the View)
   state: {
