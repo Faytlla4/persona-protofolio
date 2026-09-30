@@ -6,13 +6,16 @@
 // The OS can ask for reduced motion (Windows: Accessibility → Visual effects).
 // The visitor can overrule it once via ?motion=1 or the HUD "FX" toggle;
 // the choice is remembered in localStorage.
-function shouldReduceMotion() {
-  let forced = /[?#&]motion=1/.test(location.search + location.hash);
+function motionForced() {
+  const viaUrl = /[?#&]motion=1/.test(location.search + location.hash);
   try {
-    if (forced) localStorage.setItem("p5-motion", "1");
-    else forced = localStorage.getItem("p5-motion") === "1";
+    if (viaUrl) localStorage.setItem("p5-motion", "1");
+    else return localStorage.getItem("p5-motion") === "1";
   } catch {}
-  return matchMedia("(prefers-reduced-motion: reduce)").matches && !forced;
+  return viaUrl;
+}
+function shouldReduceMotion() {
+  return matchMedia("(prefers-reduced-motion: reduce)").matches && !motionForced();
 }
 
 const View = {
@@ -33,6 +36,7 @@ const View = {
   },
 
   init() {
+    if (motionForced()) document.body.classList.add("motion-on");
     document.querySelectorAll(".screen").forEach(s => {
       this.els.screens[s.id.replace("screen-", "")] = s;
     });

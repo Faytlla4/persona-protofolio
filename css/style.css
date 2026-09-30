@@ -557,5 +557,8 @@ body.has-art-home #slash{display:none;}
   .cursor-mark{right:-34px;}
 }
 @media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.001s !important;transition-duration:.001s !important;}
+  /* forced motion (HUD "FX On") opts back out of the OS kill-switch */
+  body:not(.motion-on) *,body:not(.motion-on) *::before,body:not(.motion-on) *::after{
+    animation-duration:.001s !important;transition-duration:.001s !important;
+  }
 }
