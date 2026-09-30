@@ -5,7 +5,9 @@
 
 const View = {
 
-  reducedMotion: matchMedia("(prefers-reduced-motion: reduce)").matches,
+  // ?motion=1 forces animation on even when the OS requests reduced motion
+  reducedMotion: matchMedia("(prefers-reduced-motion: reduce)").matches &&
+    !/[?#&]motion=1/.test(location.search + location.hash),
 
   els: {
     screens:    {},   // filled in init()
