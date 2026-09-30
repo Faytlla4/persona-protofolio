@@ -19,6 +19,7 @@ A Persona 5 menu-inspired portfolio, structured as Model–View–Controller.
     │                     contact.jpg (included) — add projects.jpg to complete the set
     ├── hero.png          ← optional: extra art layered on the home screen
     ├── me.jpeg           your photo for the About polaroid
+    ├── cv/               printable CV page (Faytlla_CV.html → print to PDF)
     └── projects/         ← add: card thumbnails
         └── <RepoName>.png  (auto-matched to GitHub repos by exact name)
 ```

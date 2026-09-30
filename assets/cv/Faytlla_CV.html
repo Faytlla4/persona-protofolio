@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faytlla — CV</title>
+<style>
+  :root { --accent: #0099cc; --ink: #14202b; --muted: #5a6b7a; --line: #dbe5ec; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, Helvetica, sans-serif; color: var(--ink); background: #eef3f6; }
+  .sheet {
+    max-width: 800px; margin: 32px auto; background: #fff;
+    padding: 48px 52px; box-shadow: 0 4px 24px rgba(0,0,0,.12);
+  }
+  header { border-bottom: 3px solid var(--accent); padding-bottom: 16px; margin-bottom: 20px; }
+  header h1 { font-size: 34px; letter-spacing: .04em; text-transform: uppercase; }
+  header .role { color: var(--accent); font-weight: 700; font-size: 16px; margin-top: 4px; }
+  header .links { margin-top: 8px; font-size: 14px; color: var(--muted); }
+  header .links a { color: var(--accent); text-decoration: none; }
+  section { margin-bottom: 20px; }
+  h2 {
+    font-size: 15px; text-transform: uppercase; letter-spacing: .14em;
+    color: var(--accent); border-bottom: 1px solid var(--line);
+    padding-bottom: 5px; margin-bottom: 10px;
+  }
+  p.summary { font-size: 14.5px; line-height: 1.6; }
+  .skills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skills span {
+    font-size: 13px; background: #eaf6fb; border: 1px solid var(--line);
+    border-radius: 20px; padding: 4px 12px;
+  }
+  .proj { margin-bottom: 12px; }
+  .proj h3 { font-size: 15px; }
+  .proj h3 a { color: var(--ink); text-decoration: none; }
+  .proj h3 a:hover { color: var(--accent); }
+  .proj .stack { font-size: 12.5px; color: var(--muted); font-weight: 600; }
+  .proj p { font-size: 14px; line-height: 1.55; margin-top: 2px; }
+  .print-bar { text-align: center; margin: 0 auto 8px; padding-top: 24px; }
+  .print-bar button {
+    background: var(--accent); color: #fff; border: 0; border-radius: 6px;
+    font-size: 15px; font-weight: 700; padding: 10px 28px; cursor: pointer;
+  }
+  @media print {
+    body { background: #fff; }
+    .sheet { box-shadow: none; margin: 0; max-width: none; padding: 0; }
+    .print-bar { display: none; }
+    a { text-decoration: none; color: var(--ink); }
+  }
+</style>
+</head>
+<body>
+<div class="sheet">
+  <header>
+    <h1>Faytlla</h1>
+    <div class="role">Web &amp; Full-Stack Developer</div>
+    <div class="links">GitHub: <a href="https://github.com/Faytlla4">github.com/Faytlla4</a></div>
+  </header>
+
+  <section>
+    <h2>Summary</h2>
+    <p class="summary">Web Developer &amp; Full-Stack Enthusiast based in Indonesia. Building responsive web applications, interactive front-ends, and modern digital experiences with JavaScript, TypeScript, and React.</p>
+  </section>
+
+  <section>
+    <h2>Technical Skills</h2>
+    <div class="skills">
+      <span>JavaScript (ES6+)</span><span>TypeScript</span><span>React.js</span>
+      <span>HTML5</span><span>CSS3 / Responsive Design</span><span>Tailwind CSS</span>
+      <span>Node.js / Express</span><span>RESTful APIs</span><span>PHP / MySQL</span>
+      <span>Git &amp; GitHub</span><span>Postman</span><span>UI/UX Prototyping</span>
+    </div>
+  </section>
+
+  <section>
+    <h2>Projects</h2>
+    <div class="proj">
+      <h3><a href="https://github.com/Faytlla4/portofolio">Portofolio Website</a> <span class="stack">— TypeScript / React</span></h3>
+      <p>Portfolio website built with React and TypeScript, showcasing web development projects with modern responsive design.</p>
+    </div>
+    <div class="proj">
+      <h3><a href="https://github.com/Faytlla4/klinikapotek">Klinik &amp; Apotek System</a> <span class="stack">— JavaScript</span></h3>
+      <p>Web-based clinic and pharmacy management system for managing patient records, prescriptions, and medical inventory.</p>
+    </div>
+    <div class="proj">
+      <h3><a href="https://github.com/Faytlla4/order_baju_template">Order Baju Template</a> <span class="stack">— JavaScript</span></h3>
+      <p>E-commerce ordering template for clothing and apparel with dynamic cart and checkout interface.</p>
+    </div>
+    <div class="proj">
+      <h3><a href="https://github.com/Faytlla4/world_war2">World War 2 History</a> <span class="stack">— HTML / CSS</span></h3>
+      <p>Interactive educational website detailing the dark history, timeline, and major events of World War II.</p>
+    </div>
+    <div class="proj">
+      <h3><a href="https://github.com/Faytlla4/happybirthday">Happy Birthday Card</a> <span class="stack">— JavaScript</span></h3>
+      <p>Interactive web-based birthday greeting card with dynamic animations and personalized messages.</p>
+    </div>
+  </section>
+
+  <div class="print-bar"><button onclick="window.print()">Print / Save as PDF</button></div>
+</div>
+</body>
+</html>
