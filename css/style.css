@@ -231,7 +231,26 @@ body[data-screen]:not([data-screen="home"]) #slash{
 .card:hover .meta .go{background:var(--black);}
 
 /* ---------- FEATURED CARDS ---------- */
-.card.feat{color:var(--white);filter:drop-shadow(7px 7px 0 var(--accent-deep));}
+#feat-grid{counter-reset:feat;}
+.card.feat{color:var(--white);filter:drop-shadow(7px 7px 0 var(--accent-deep));counter-increment:feat;}
+/* curation number: lead pick is 01, the rest follow */
+.card.feat::after{
+  content:"0" counter(feat);
+  position:absolute;top:-20px;left:12px;z-index:2;
+  background:var(--black);color:var(--accent);
+  font-family:'Archivo Black','Arial Black',Impact,sans-serif;font-size:22px;
+  padding:2px 12px;transform:rotate(-4deg);
+  box-shadow:4px 4px 0 rgba(0,0,0,.5);
+}
+/* spotlight: lead project spans two columns on wide screens */
+@media (min-width:900px){
+  #feat-grid .card.feat:first-child{grid-column:span 2;}
+  #feat-grid .card.feat:first-child p{font-size:17px;max-width:62ch;}
+}
+.grid-label .count{
+  display:inline-block;background:var(--accent);color:var(--ink);
+  font-size:.8em;padding:2px 10px;margin-left:10px;transform:skewX(-10deg);
+}
 .card.feat::before{background:var(--black);}
 .card.feat:hover{filter:drop-shadow(10px 10px 0 var(--accent));}
 .card.feat p{color:#d8d5cf;}
@@ -286,6 +305,29 @@ body[data-screen]:not([data-screen="home"]) #slash{
 }
 
 /* ---------- ABOUT / CONTACT ---------- */
+.about-lead{
+  font-family:'Archivo Black','Arial Black',Impact,sans-serif;
+  font-size:clamp(30px,5vw,68px);line-height:.95;text-transform:uppercase;
+  margin:0 0 3vh;transform:rotate(-1deg);
+  text-shadow:3px 3px 0 var(--black);
+  max-width:16ch;
+}
+.about-lead em{font-style:normal;color:var(--accent);}
+.fact-sheet{
+  list-style:none;display:grid;grid-template-columns:1fr 1fr;
+  gap:12px 16px;margin-top:24px;
+}
+.fact-sheet li{
+  background:var(--black);color:var(--white);
+  padding:10px 14px;transform:rotate(-.5deg);
+  font-size:15px;
+}
+.fact-sheet li:nth-child(even){transform:rotate(.5deg);}
+.fact-sheet b{
+  display:block;font-size:11px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:3px;
+}
+@media (max-width:640px){.fact-sheet{grid-template-columns:1fr;}}
 .paper{
   max-width:760px;background:var(--white);color:var(--ink);
   padding:30px 34px;font-size:18px;line-height:1.55;

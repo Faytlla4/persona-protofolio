@@ -108,6 +108,8 @@ const View = {
   },
 
   renderFeatured(list) {
+    const count = document.getElementById("feat-count");
+    if (count) count.textContent = String(list.length).padStart(2, "0");
     if (this.els.featGrid.childElementCount) return;
     list.forEach((f, i) => {
       const a = document.createElement("a");
@@ -126,6 +128,13 @@ const View = {
   },
 
   renderRepos(repos, statusText, model) {
+    // every repo is already curated above → hide the redundant feed section
+    const showFeed = repos.length > 0;
+    const label = document.getElementById("allrepo-label");
+    if (label) label.style.display = showFeed ? "" : "none";
+    this.els.repoStatus.style.display = showFeed ? "" : "none";
+    this.els.repoGrid.style.display = showFeed ? "" : "none";
+    if (!showFeed) return;
     this.els.repoStatus.textContent = statusText;
     this.els.repoGrid.innerHTML = "";
     repos.forEach((r, i) => {
