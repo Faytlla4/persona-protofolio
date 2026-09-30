@@ -1,4 +1,4 @@
-# Persona-Style Portfolio — Fahmi Firjatullah
+# Persona-Style Portfolio — Faytlla
 
 A Persona 5 menu-inspired portfolio, structured as Model–View–Controller.
 
@@ -17,11 +17,9 @@ A Persona 5 menu-inspired portfolio, structured as Model–View–Controller.
     ├── cursors/          Animated cursor sprite strips (30 frames each)
     ├── menus/            per-screen backgrounds: home.jpg, skills.jpg, about.jpg,
     │                     contact.jpg (included) — add projects.jpg to complete the set
-    ├── cv/               your downloadable CV (linked from About + Contact)
     ├── hero.png          ← optional: extra art layered on the home screen
-    ├── me.jpg            ← add: your photo for the About polaroid
+    ├── me.jpeg           your photo for the About polaroid
     └── projects/         ← add: card thumbnails
-        ├── bsl.png, medcnn.png, gesture.png, rapidcheck.png   (featured)
         └── <RepoName>.png  (auto-matched to GitHub repos by exact name)
 ```
 
