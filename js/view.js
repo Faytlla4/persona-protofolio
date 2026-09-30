@@ -134,7 +134,7 @@ const View = {
       a.href = r.html_url; a.target = "_blank"; a.rel = "noopener";
       a.style.setProperty("--tilt", ((this.hash(r.name) % 5) - 2) * 0.8 + "deg");
       a.style.setProperty("--d", i * 70 + "ms");
-      a.style.setProperty("--lc", model.langColors[r.language] || "#e60012");
+      a.style.setProperty("--lc", model.langColors[r.language] || "#00e5ff");
       const pretty = r.name.replace(/[-_]/g, " ").replace(/\b\w/g, c => c.toUpperCase());
       const img = model.projectImages[r.name] || `assets/projects/${r.name}.png`;
       a.innerHTML = `
@@ -181,7 +181,7 @@ const View = {
   startClock() {
     setInterval(() => {
       this.els.clock.textContent =
-        new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) + " · LDN";
+        new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }) + " · WIB";
     }, 1000);
   },
 
@@ -192,50 +192,59 @@ const View = {
     const arts = [...document.querySelectorAll(".menu-art")];
     let tx = 0, ty = 0, cx = 0, cy = 0;
     addEventListener("mousemove", e => {
-      tx = e.clientX / innerWidth - 0.5;
-      ty = e.clientY / innerHeight - 0.5;
+      tx = (e.clientX / innerWidth - 0.5) * 2;
+      ty = (e.clientY / innerHeight - 0.5) * 2;
     }, { passive: true });
     const loop = () => {
-      cx += (tx - cx) * 0.06; cy += (ty - cy) * 0.06;
-      stripes.style.transform = `translate(${cx * 22}px, ${cy * 14}px)`;
-      halftone.style.transform = `translate(${cx * -34}px, ${cy * -22}px)`;
+      cx += (tx - cx) * 0.05;
+      cy += (ty - cy) * 0.05;
+      if (stripes) stripes.style.transform = `translate3d(${cx * 16}px, ${cy * 10}px, 0)`;
+      if (halftone) halftone.style.transform = `translate3d(${cx * -24}px, ${cy * -16}px, 0)`;
       arts.forEach(a => {
-        if (a.isConnected)
-          a.style.transform = `translate(${cx * 14}px, ${cy * 9}px) scale(1.04)`;
+        if (a.isConnected) a.style.transform = `translate3d(${cx * 12}px, ${cy * 8}px, 0) scale(1.04)`;
       });
       requestAnimationFrame(loop);
     };
     loop();
   },
 
-  // 30-frame sprite-strip cursor extracted from the original .ani files
+  // Optimized 30-frame sprite cursor with smooth frame cycling
   startCursor() {
-    if (!matchMedia("(pointer:fine)").matches || this.reducedMotion) return;
+    if (!matchMedia("(pointer:fine)").matches) return;
     const cur = this.els.cursor;
+    if (!cur) return;
     document.body.classList.add("cursor-on");
-    let x = -100, y = -100, frame = 0, last = 0, visible = false;
+    let visible = false, frame = 0, last = 0, mouseX = -100, mouseY = -100;
 
     addEventListener("mousemove", e => {
-      x = e.clientX; y = e.clientY;
+      mouseX = e.clientX;
+      mouseY = e.clientY;
       if (!visible) { cur.style.display = "block"; visible = true; }
+      cur.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
       const t = e.target;
       const overLink = t.closest &&
-        t.closest("a,button,.card,.menu-item,.back-hint,.contact-chip,#big-name");
+        t.closest("a,button,.card,.menu-item,.back-hint,.contact-chip,#big-name,input,textarea");
       cur.classList.toggle("link", !!overLink);
     }, { passive: true });
+
+    document.documentElement.addEventListener("mouseenter", () => {
+      cur.style.display = "block"; visible = true;
+    });
 
     document.documentElement.addEventListener("mouseleave", () => {
       cur.style.display = "none"; visible = false;
     });
 
-    const tick = ts => {
-      if (ts - last >= 50) {                       // 50ms = original .ani frame rate
-        frame = (frame + 1) % 30; last = ts;
-        cur.style.backgroundPosition = -frame * 48 + "px 0";
-      }
-      cur.style.transform = `translate(${x}px, ${y}px)`;
+    if (!this.reducedMotion) {
+      const tick = ts => {
+        if (ts - last >= 45) { // ~22 FPS sprite animation cycle
+          frame = (frame + 1) % 30;
+          last = ts;
+          cur.style.backgroundPosition = -frame * 48 + "px 0";
+        }
+        requestAnimationFrame(tick);
+      };
       requestAnimationFrame(tick);
-    };
-    requestAnimationFrame(tick);
+    }
   },
 };

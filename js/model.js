@@ -5,10 +5,10 @@
 
 const Model = {
 
-  githubUser: "Omicron69",
+  githubUser: "Faytlla4",
 
   // Where the contact form delivers (via formsubmit.co relay)
-  contactEmail: "mez.rahman777@gmail.com",
+  contactEmail: "fahmi@example.com",
 
   // App state (read/written by the Controller, displayed by the View)
   state: {
@@ -21,65 +21,77 @@ const Model = {
   // ---- Featured projects (hand-written, shown above the GitHub feed) ----
   featured: [
     {
-      title: "BSL Fingerspelling: “Hands”",
-      tag: "Live App", color: "#3dff6e", live: true,
-      url: "https://bslgame.co.uk/", cta: "Play at bslgame.co.uk →",
-      img: "assets/projects/bsl.png",
-      desc: "A game that teaches you the BSL alphabet using nothing but your webcam. Built with React, Node.js, TensorFlow.js and MediaPipe hand tracking. This was my final year project and it scored an A+ at 87/100.",
+      title: "Portofolio Website",
+      tag: "TypeScript", color: "#00e5ff",
+      url: "https://github.com/Faytlla4/portofolio", cta: "View on GitHub →",
+      img: "assets/projects/portofolio.png",
+      desc: "Portfolio website built with React and TypeScript, showcasing web development projects with modern responsive design.",
     },
     {
-      title: "Steam Review Sentiment with Transformers",
-      tag: "NLP", color: "#e60012",
-      url: "https://github.com/Omicron69/Granular-Sentiment-Pipeline-Class-Weighted-Transformers-for-Steam-Reviews",
-      cta: "View on GitHub →",
-      img: "assets/projects/steam.png",
-      desc: "Fine-tuned DistilBERT, BERTweet and RoBERTa to sort Steam reviews into a custom six-class sentiment taxonomy, with class weighting to handle the imbalance. RoBERTa came out on top at 88.2% F1.",
+      title: "Klinik & Apotek System",
+      tag: "JavaScript", color: "#00e5ff",
+      url: "https://github.com/Faytlla4/klinikapotek", cta: "View on GitHub →",
+      img: "assets/projects/klinikapotek.png",
+      desc: "Web-based clinic and pharmacy management system for managing patient records, prescriptions, and medical inventory.",
     },
     {
-      title: "DownloadGuard",
-      tag: "Security", color: "#f1e05a",
-      url: "https://github.com/Omicron69/DownloadGuard", cta: "View on GitHub →",
-      img: "assets/projects/downloadguard.png",
-      desc: "A Chrome extension that protects everyday users in real time. It watches for malicious downloads, phishing emails, deceptive links and QR code scams, all layered into one Manifest V3 extension.",
+      title: "Order Baju Template",
+      tag: "JavaScript", color: "#00bfff",
+      url: "https://github.com/Faytlla4/order_baju_template", cta: "View on GitHub →",
+      img: "assets/projects/order_baju.png",
+      desc: "E-commerce ordering template for clothing and apparel with dynamic cart and checkout interface.",
     },
     {
-      title: "Medical Image Classification",
-      tag: "Deep Learning", color: "#3178c6",
-      url: "https://github.com/Omicron69/organsmnist-cnn-classification", cta: "View on GitHub →",
-      img: "assets/projects/medcnn.png",
-      desc: "Classifying organs in CT scans, from a baseline dense net to five custom CNNs to fine-tuned ResNet50 and EfficientNetB0, reaching 79% test accuracy on 25,000+ OrganSMNIST images.",
+      title: "World War 2 History",
+      tag: "HTML/CSS", color: "#0099cc",
+      url: "https://github.com/Faytlla4/world_war2", cta: "View on GitHub →",
+      img: "assets/projects/ww2.png",
+      desc: "Interactive educational website detailing the dark history, timeline, and major events of World War II.",
+    },
+    {
+      title: "Happy Birthday Card",
+      tag: "JavaScript", color: "#00e5ff",
+      url: "https://github.com/Faytlla4/happybirthday", cta: "View on GitHub →",
+      img: "assets/projects/birthday.png",
+      desc: "Interactive web-based birthday greeting card with dynamic animations and personalized messages.",
     },
   ],
 
   // Repos already shown in "featured" get hidden from the GitHub feed
   featuredRepoNames: [
-    "BritishFingerSpellingAI",
-    "Granular-Sentiment-Pipeline-Class-Weighted-Transformers-for-Steam-Reviews",
-    "DownloadGuard",
-    "organsmnist-cnn-classification",
+    "portofolio",
+    "klinikapotek",
+    "order_baju_template",
+    "world_war2",
+    "happybirthday",
   ],
 
   // Shown if the GitHub API can't be reached
   fallbackRepos: [
     {
-      name: "crime-analysis-montgomery-county", language: "Jupyter Notebook", stargazers_count: 0,
-      html_url: "https://github.com/Omicron69/crime-analysis-montgomery-county",
-      description: "Ten years of Montgomery County crime data, taken from a messy 90 MB government CSV to ten answered analytical questions, geospatial hotspot maps and a district safety ranking.",
+      name: "portofolio", language: "TypeScript", stargazers_count: 0,
+      html_url: "https://github.com/Faytlla4/portofolio",
+      description: "Portfolio website with React and TypeScript.",
     },
     {
-      name: "asthma-worsening-prediction", language: "MATLAB", stargazers_count: 0,
-      html_url: "https://github.com/Omicron69/asthma-worsening-prediction",
-      description: "Predicting worsening asthma symptoms from NHS primary-care data with SQL and MATLAB, following CRISP-DM. Compares four models on a heavily imbalanced clinical dataset.",
+      name: "klinikapotek", language: "JavaScript", stargazers_count: 0,
+      html_url: "https://github.com/Faytlla4/klinikapotek",
+      description: "Web application for clinic and pharmacy management.",
     },
     {
-      name: "Chronic-Kideney-Disease-Analyzer", language: "PHP", stargazers_count: 0,
-      html_url: "https://github.com/Omicron69/Chronic-Kideney-Disease-Analyzer",
-      description: "A healthcare tracking web app. I led the front-end and requirements analysis in a multidisciplinary team, and our solution improved patient diagnostics by 25%.",
+      name: "order_baju_template", language: "JavaScript", stargazers_count: 0,
+      html_url: "https://github.com/Faytlla4/order_baju_template",
+      description: "Clothing order website template.",
     },
     {
-      name: "MSc-Washington-Crime-Analysis-with-Pandas", language: "Jupyter Notebook", stargazers_count: 0,
-      html_url: "https://github.com/Omicron69/MSc-Washington-Crime-Analysis-with-Pandas",
-      description: "Crime trend analysis of Washington D.C. public data. Reproducible Pandas notebooks with visual summaries written for people who do not code.",
+      name: "world_war2", language: "HTML", stargazers_count: 0,
+      html_url: "https://github.com/Faytlla4/world_war2",
+      description: "Sebuah web yg berisi sejarah kelam WW2.",
+    },
+    {
+      name: "happybirthday", language: "JavaScript", stargazers_count: 0,
+      html_url: "https://github.com/Faytlla4/happybirthday",
+      description: "Interactive web birthday card.",
     },
   ],
 
@@ -97,23 +109,19 @@ const Model = {
 
   // ---- Skills screen ----
   skills: [
-    { group: "AI · ML · Data Science", items: [
-      ["Python · pandas · NumPy", 92], ["TensorFlow / Keras · PyTorch", 88],
-      ["scikit-learn · XGBoost", 86], ["CNNs & Transfer Learning", 85],
-      ["NLP & Transformers", 82], ["Computer Vision · MediaPipe", 86],
+    { group: "Front-End Development", items: [
+      ["JavaScript (ES6+)", 90], ["TypeScript", 82],
+      ["React.js", 85], ["HTML5 & Semantic Web", 95],
+      ["CSS3 / Responsive Design", 90], ["Tailwind CSS", 80],
     ]},
-    { group: "Web & Full-Stack", items: [
-      ["JavaScript / TypeScript", 86], ["React · React Native · Next.js", 84],
-      ["Node.js · REST APIs", 80], ["TensorFlow.js (in-browser ML)", 84],
-      ["PHP · SQL · PostgreSQL", 74], ["UX Design · Figma · Adobe XD", 82],
+    { group: "Back-End & Tools", items: [
+      ["Node.js / Express", 78], ["RESTful APIs", 82],
+      ["PHP / PostgreSQL", 75], ["Git & GitHub Workflow", 85],
+      ["VS Code / DevTools", 90], ["Postman", 80],
     ]},
-    { group: "Cloud & Engineering", items: [
-      ["Git & GitHub", 88], ["AWS · Azure · GCP", 74],
-      ["Docker · Firebase", 76], ["Agile · PRINCE2 Agile", 80],
-      ["Tableau · Power BI", 72], ["Bash · PowerShell", 75],
-    ]},
-    { group: "Spoken Languages", items: [
-      ["English · Bengali · Hindi · Urdu", 100], ["Japanese (JLPT N4)", 62], ["Mandarin", 30],
+    { group: "Other Skills", items: [
+      ["UI/UX Prototyping", 78], ["Web Performance", 75],
+      ["Problem Solving", 85], ["Team Collaboration", 88],
     ]},
   ],
 
