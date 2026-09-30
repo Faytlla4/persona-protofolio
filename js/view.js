@@ -3,11 +3,21 @@
    the Controller tells the View what to show.
    ===================================================================== */
 
+// The OS can ask for reduced motion (Windows: Accessibility → Visual effects).
+// The visitor can overrule it once via ?motion=1 or the HUD "FX" toggle;
+// the choice is remembered in localStorage.
+function shouldReduceMotion() {
+  let forced = /[?#&]motion=1/.test(location.search + location.hash);
+  try {
+    if (forced) localStorage.setItem("p5-motion", "1");
+    else forced = localStorage.getItem("p5-motion") === "1";
+  } catch {}
+  return matchMedia("(prefers-reduced-motion: reduce)").matches && !forced;
+}
+
 const View = {
 
-  // ?motion=1 forces animation on even when the OS requests reduced motion
-  reducedMotion: matchMedia("(prefers-reduced-motion: reduce)").matches &&
-    !/[?#&]motion=1/.test(location.search + location.hash),
+  reducedMotion: shouldReduceMotion(),
 
   els: {
     screens:    {},   // filled in init()

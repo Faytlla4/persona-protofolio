@@ -13,6 +13,24 @@ const Controller = {
     this.bindKeyboard();
     this.bindAudioUnlock();
     this.bindContactForm();
+    this.bindMotionToggle();
+  },
+
+  /* ---------- HUD motion toggle (persists via localStorage) ---------- */
+  bindMotionToggle() {
+    const btn = document.getElementById("motion-toggle");
+    const label = document.getElementById("motion-state");
+    if (!btn || !label) return;
+    let forced = false;
+    try { forced = localStorage.getItem("p5-motion") === "1"; } catch {}
+    label.textContent = forced ? "On" : "Auto";
+    btn.addEventListener("click", () => {
+      try {
+        if (forced) localStorage.removeItem("p5-motion");
+        else localStorage.setItem("p5-motion", "1");
+      } catch {}
+      location.reload();
+    });
   },
 
   /* ---------- Contact form (relayed via formsubmit.co, mailto fallback) ---------- */
